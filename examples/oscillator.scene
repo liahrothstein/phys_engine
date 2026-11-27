@@ -1,0 +1,25 @@
+# Сцена: пружинный осциллятор (блок B1).
+# Грамматика окончательно фиксируется в блоке A — файл отражает текущий план.
+
+meta:
+    integrator: verlet-velocity
+    dt: 0.0041666667     # 1/240 с
+    duration: 10.0        # секунды
+    # camera: x y half_width   # задаётся при появлении рендера
+
+bodies:
+    - id: 0
+      mass: 1.0
+      pos: [1.0, 0.0]
+      vel: [0.0, 0.0]
+
+forces:
+    - spring:
+        bodies: [0]
+        anchor: [0.0, 0.0]   # связь с неподвижной точкой
+        k: 1.0
+        length: 0.0
+
+record:
+    csv: oscillator.csv      # t, x, v, E
+    every: 0.01
